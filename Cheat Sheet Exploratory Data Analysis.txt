@@ -1,0 +1,41 @@
+Complete dataframe correlation
+
+df.corr()
+
+Specific Attribute correlation
+
+df[['attribute1','attribute2',...]].corr()
+
+Scatter Plot
+
+from matlplotlib import pyplot as plt
+plt.scatter(df[['attribute_1']],df[['attribute_2']])
+
+Regression Plot
+
+import seaborn as sns 
+sns.regplot(x='attribute_1',y='attribute_2', data=df)
+
+Box plot
+
+import seaborn as sns 
+sns.boxplot(x='attribute_1',y='attribute_2', data=df)
+
+Grouping by attributes
+
+b. Group the data by different categories of multiple attributes, displaying the average value of numerical attributes with the same category.
+b) df_group = df.groupby(['attribute_1','attribute_2'],as_index=False).mean()
+
+Pivot Tables
+
+grouped_pivot = df_group.pivot(index='attribute_1',columns='attribute_2')
+
+Pseudocolor plot
+
+from matlplotlib import pyplot as plt 
+plt.pcolor(grouped_pivot, cmap='RdBu')
+
+Pearson Coefficient and p-value
+
+From scipy import stats 
+pearson_coef,p_value=stats.pearsonr(df['attribute_1'],df['attribute_2'])
